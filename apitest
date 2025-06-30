@@ -1,0 +1,20 @@
+import requests
+
+# === تنظیمات ===
+TOKEN_ADDRESS = "5TM2nWGomk9MmBNKmsFf8QAsHZf3S8hvtu214KhQpump"  # آدرس توکن دلخواه
+API_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJjcmVhdGVkQXQiOjE3NTExODY5OTY1ODMsImVtYWlsIjoid2FoZGF0a2hhbjM2NUBnbWFpbC5jb20iLCJhY3Rpb24iOiJ0b2tlbi1hcGkiLCJhcGlWZXJzaW9uIjoidjIiLCJpYXQiOjE3NTExODY5OTZ9.UKXAHe594U2S8CoRdRIZiDFF-qspzQgbOBQlcNtt_M4"  # کلید API تو
+
+# === درخواست به Solscan ===
+url = f"https://api.solscan.io/v1/token/meta?tokenAddress={TOKEN_ADDRESS}"
+
+headers = {
+    "Authorization": f"Bearer {API_KEY}"
+}
+
+try:
+    response = requests.get(url, headers=headers)
+    data = response.json()
+    print("✅ پاسخ دریافتی:")
+    print(data)
+except Exception as e:
+    print("❌ خطا در دریافت داده:", e)
